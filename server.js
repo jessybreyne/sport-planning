@@ -86,15 +86,13 @@ router.route('/edit/:id')
     })
   })
   .post((req, res) => {
-    Planning.findById(req.params.id).then(planning => {
-      //@Todo
-
+    Planning.findByIdAndUpdate(req.params.id, req.body).then(planning => {
       planning.save().then(planning => {
         console.log('Votre tâche a été modifiée');
-        res.redirect('/planning')
+        res.redirect('/planning');
       }).catch(err => {
         console.error(err)
-      })
+      });
     }).catch(err => {
       console.error(err)
     })
