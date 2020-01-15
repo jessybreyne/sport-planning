@@ -55,8 +55,8 @@ let router = express.Router()
 
 router.route('/')
   .get((req, res) => {
-    Planning.find().then(todos => {
-      res.render('todo.njk', { todos: todos })
+    Planning.find().then(plannings => {
+      res.render('planning.njk', { plannings: plannings })
     }).catch(err => {
       console.error(err)
     })
@@ -66,11 +66,12 @@ router.route('/add')
   .post((req, res) => {
     new Planning({
       label: req.body.inputLabel,
-      dateBegin: req.body.inputDateBegin,
-      dateEnd: req.body.inputDateEnd
-    }).save().then(todo => {
+      jour: req.body.inputJour,
+      nbRepetitions: req.body.inputNbRepetitions,
+      nbSeries: req.body.inputNbSeries
+    }).save().then(planning => {
       console.log('Votre tâche a été ajoutée');
-      res.redirect('/todo')
+      res.redirect('/planning')
     }).catch(err => {
       console.warn(err);
     })
@@ -78,19 +79,19 @@ router.route('/add')
 
 router.route('/edit/:id')
   .get((req, res) => {
-    Planning.findById(req.params.id).then(todo => {
-      res.render('edit.njk', { todo: todo })
+    Planning.findById(req.params.id).then(planning => {
+      res.render('edit.njk', { planning: planning })
     }).catch(err => {
       console.error(err)
     })
   })
   .post((req, res) => {
-    Planning.findById(req.params.id).then(todo => {
+    Planning.findById(req.params.id).then(planning => {
       //@Todo
 
-      todo.save().then(todo => {
+      planning.save().then(planning => {
         console.log('Votre tâche a été modifiée');
-        res.redirect('/todo')
+        res.redirect('/planning')
       }).catch(err => {
         console.error(err)
       })
@@ -108,17 +109,17 @@ router.route('/delete/:id')
   .get((req, res) => {
     Planning.findByIdAndRemove({ _id: req.params.id }).then(() => {
       console.log('Votre tâche est finie');
-      res.redirect('/todo')
+      res.redirect('/planning')
     }).catch(err => {
       console.error(err)
     })
   })
 
 
-app.use('/todo', router)
+app.use('/planning', router)
 app.use('/pub', express.static('public'))
 app.use((req, res) => {
-  res.redirect('/todo')
+  res.redirect('/planning')
 })
 
 app.listen(config.express.port, config.express.ip, () => {
