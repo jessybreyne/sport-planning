@@ -11,9 +11,9 @@
               <thead>
                 <tr>
                   <th>Tâche</th>
-                  <th>Date de début</th>
-                  <th>Date de fin</th>
-                  <th>Priorité</th>
+                  <th>Jour</th>
+                  <th>Nb répétitions</th>
+                  <th>Nb séries</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -24,10 +24,13 @@
                       {{ todo.label }}
                     </td>
                     <td>
-                      {{ todo.dateBegin }}
+                      {{ todo.jour }}
                     </td>
                     <td>
-                      {{ todo.dateEnd }}
+                      {{ todo.nbRepetitions }}
+                    </td>
+                    <td>
+                      {{ todo.nbSeries }}
                     </td>
                     <td>
                       <a class="btn btn-warning btn-sm" href="/todo/edit/{{ todo._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>

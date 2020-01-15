@@ -7,10 +7,11 @@ const mongoose = require('mongoose')
 
 const config = require(path.join(__dirname, 'config.js'))
 
-const TodoSchema = new mongoose.Schema({
+const PlanningSchema = new mongoose.Schema({
   label: { type: String, required: true },
-  dateBegin: { type: String },
-  dateEnd: { type: String },
+  jour: { type: String },
+  nbRepetitions: { type: String },
+  nbSeries: { type: String },
 })
 
 // to fix all deprecation warnings
@@ -19,7 +20,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useCreateIndex', true);
 
-const Todo = mongoose.model('Todo', TodoSchema)
+const Planning = mongoose.model('Planning', PlanningSchema)
 
 mongoose.connect('mongodb://' + config.mongodb.host + '/' + config.mongodb.db)
 mongoose.connection.on('error', err => {
@@ -54,7 +55,7 @@ let router = express.Router()
 
 router.route('/')
   .get((req, res) => {
-    Todo.find().then(todos => {
+    Planning.find().then(todos => {
       res.render('todo.njk', { todos: todos })
     }).catch(err => {
       console.error(err)
@@ -63,7 +64,7 @@ router.route('/')
 
 router.route('/add')
   .post((req, res) => {
-    new Todo({
+    new Planning({
       label: req.body.inputLabel,
       dateBegin: req.body.inputDateBegin,
       dateEnd: req.body.inputDateEnd
@@ -77,14 +78,14 @@ router.route('/add')
 
 router.route('/edit/:id')
   .get((req, res) => {
-    Todo.findById(req.params.id).then(todo => {
+    Planning.findById(req.params.id).then(todo => {
       res.render('edit.njk', { todo: todo })
     }).catch(err => {
       console.error(err)
     })
   })
   .post((req, res) => {
-    Todo.findById(req.params.id).then(todo => {
+    Planning.findById(req.params.id).then(todo => {
       //@Todo
 
       todo.save().then(todo => {
@@ -105,7 +106,7 @@ router.route('/delete/all')
 
 router.route('/delete/:id')
   .get((req, res) => {
-    Todo.findByIdAndRemove({ _id: req.params.id }).then(() => {
+    Planning.findByIdAndRemove({ _id: req.params.id }).then(() => {
       console.log('Votre tâche est finie');
       res.redirect('/todo')
     }).catch(err => {
