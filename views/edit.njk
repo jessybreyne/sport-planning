@@ -11,18 +11,22 @@
           <center>
             <form action="/todo/edit/{{ todo._id }}" method="post">
               <div class="form-group">
-                <label for="inputLabel">Nom de la tâche :</label>
+                <label for="inputLabel">Nom de l'exercice :</label>
                 <input type="text" class="form-control" id="inputLabel" name="inputLabel" value="{{ todo.label }}" autofocus required>
               </div>
               <div class="form-group">
-                <label for="inputDateBegin" class="">Début de la tâche :</label>
-                <input type="text" class="form-control" id="inputDateBegin" name="inputDateBegin" value="{{ todo.dateBegin }}" required>
+                <label for="inputJour" class="">Jour de l'exercice :</label>
+                <input type="text" class="form-control" id="inputJour" name="inputJour" value="{{ todo.jour }}" required>
               </div>
               <div class="form-group">
-                <label for="inputDateEnd" class="">Fin de la tâche :</label>
-                <input class="form-control" type="text" id="inputDateEnd" name="inputDateEnd" value="{{ todo.dateEnd }}">
+                <label for="inputNbRepetitions" class="">Nombre de répétitions :</label>
+                <input class="form-control" type="text" id="inputNbRepetitions" name="inputNbRepetitions" value="{{ todo.nbRepetitions }}">
               </div>
-              <button type="submit" class="btn btn-success">Modifier '{{ todo.label }}'</button>
+              <div class="form-group">
+                <label for="inputNbSerie" class="">Nombre de séries :</label>
+                <input class="form-control" type="text" id="inputNbSerie" name="inputNbSerie" value="{{ todo.nbSeries }}">
+              </div>
+              <button type="submit" class="btn btn-success">Modifier</button>
             </form>
 
             <br />
