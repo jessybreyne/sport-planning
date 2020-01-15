@@ -44,12 +44,12 @@
             <br>
 
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAddTodo">
-              Ajouter une tâche
+              Ajouter un exercice
             </button>
            <br>
 
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemoveAllTodo">
-              Supprimer toutes les tâches
+              Supprimer tout les exercices
             </button>
           </center>
         </blockquote>
@@ -61,7 +61,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalAddTodo">Ajouter une tâche</h5>
+          <h5 class="modal-title" id="modalAddTodo">Ajouter un exercice</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -69,16 +69,28 @@
         <div class="modal-body">
           <form action="/todo/add/" method="post">
             <div class="form-group">
-              <label for="inputLabel">Nom de la nouvelle tâche :</label>
-              <input type="text" class="form-control" id="inputLabel" name="inputLabel" placeholder="Aller chercher du pain" autofocus required>
+              <label for="inputLabel">Nom de l'exercice :</label>
+              <input type="text" class="form-control" id="inputLabel" name="inputLabel" placeholder="Développer militaire" autofocus required>
             </div>
             <div class="form-group">
-              <label for="inputDateBegin" class="">Début de la tâche :</label>
-              <input class="form-control" type="text" id="inputDateBegin" name="inputDateBegin" placeholder="01/01/2019" required>
+              <label for="inputJour" class="">Jour de la semaine :</label>
+              <select class="form-control" id="inputJour" name="inputJour">
+                <option>lundi</option>
+                <option>mardi</option>
+                <option>mercredi</option>
+                <option>jeudi</option>
+                <option>vendredi</option>
+                <option>samedi</option>
+                <option>dimanche</option>
+              </select>
             </div>
             <div class="form-group">
-              <label for="inputDateEnd" class="">Fin de la tâche :</label>
-              <input class="form-control" type="text" id="inputDateEnd" name="inputDateEnd" placeholder="02/01/2019">
+              <label for="inputNbRepetitions" class="">Nombre de répétitions :</label>
+              <input class="form-control" type="text" id="inputNbRepetitions" name="inputNbRepetitions" placeholder="12" required>
+            </div>
+            <div class="form-group">
+              <label for="inputNbSeries" class="">Nombre de séries :</label>
+              <input class="form-control" type="text" id="inputNbSeries" name="inputNbSeries" placeholder="5" required>
             </div>
         </div>
         <div class="modal-footer">
@@ -94,7 +106,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalRemoveAllTodo">Supprimer toutes les tâches ?</h5>
+          <h5 class="modal-title" id="modalRemoveAllTodo">Supprimer tout les exercices ?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
