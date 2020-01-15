@@ -7,7 +7,7 @@
       <div class="card-block">
         <blockquote class="card-blockquote">
           <center>
-            <table id="todolist" class="table table-bordered table-hover sortable">
+            <table id="planninglist" class="table table-bordered table-hover sortable">
               <thead>
                 <tr>
                   <th>Tâche</th>
@@ -18,23 +18,23 @@
                 </tr>
               </thead>
               <tbody>
-                {% for todo in todos %}
+                {% for planning in plannings %}
                   <tr>
                     <td>
-                      {{ todo.label }}
+                      {{ planning.label }}
                     </td>
                     <td>
-                      {{ todo.jour }}
+                      {{ planning.jour }}
                     </td>
                     <td>
-                      {{ todo.nbRepetitions }}
+                      {{ planning.nbRepetitions }}
                     </td>
                     <td>
-                      {{ todo.nbSeries }}
+                      {{ planning.nbSeries }}
                     </td>
                     <td>
-                      <a class="btn btn-warning btn-sm" href="/todo/edit/{{ todo._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                      <a class="btn btn-success btn-sm" href="/todo/delete/{{ todo._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+                      <a class="btn btn-warning btn-sm" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                      <a class="btn btn-success btn-sm" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
                     </td>
                   </tr>
                 {% endfor %}
@@ -67,7 +67,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="/todo/add/" method="post">
+          <form action="/planning/add/" method="post">
             <div class="form-group">
               <label for="inputLabel">Nom de l'exercice :</label>
               <input type="text" class="form-control" id="inputLabel" name="inputLabel" placeholder="Développer militaire" autofocus required>
@@ -114,7 +114,7 @@
         <div class="modal-body">
             <center>
                 <button type="button" class="btn btn-success" data-dismiss="modal">Non</button>
-                <a class="btn btn-danger" href="/todo/delete/all" role="button">Oui</a>
+                <a class="btn btn-danger" href="/planning/delete/all" role="button">Oui</a>
             </center>
         </div>
       </div>
