@@ -2,48 +2,7 @@
 
 {% block content %}
   <div class="col-md-10 offset-md-1">
-
-    <div class="card card-outline-primary mb-3 text-center">
-      <div class="card-block">
-        <blockquote class="card-blockquote">
-          <center>
-            <table id="planninglist" class="table table-bordered table-hover sortable">
-              <thead>
-                <tr>
-                  <th>Tâche</th>
-                  <th>Jour</th>
-                  <th>Nb répétitions</th>
-                  <th>Nb séries</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for planning in plannings %}
-                  <tr>
-                    <td>
-                      {{ planning.label }}
-                    </td>
-                    <td>
-                      {{ planning.jour }}
-                    </td>
-                    <td>
-                      {{ planning.nbRepetitions }}
-                    </td>
-                    <td>
-                      {{ planning.nbSeries }}
-                    </td>
-                    <td>
-                      <a class="btn btn-warning btn-sm" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                      <a class="btn btn-success btn-sm" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-
-            <br>
-
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAddTodo">
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAddTodo">
               Ajouter un exercice
             </button>
            <br>
@@ -51,11 +10,161 @@
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemoveAllTodo">
               Supprimer tout les exercices
             </button>
-          </center>
-        </blockquote>
-      </div>
+
+  <h1>Lundi</h1>
+
+    <div class="card-columns">
+    {% for planning in plannings %}
+      {% if planning.jour == "lundi" %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planning.label }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
+            <p class="card-text">{{ planning.nbRepetitions }}</p>
+            <p class="card-text">{{ planning.nbSeries }}</p>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
     </div>
-  </div>
+
+    <h1>Mardi</h1>
+
+    <div class="card-columns">
+    {% for planning in plannings %}
+      {% if planning.jour == "mardi" %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planning.label }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
+            <p class="card-text">{{ planning.nbRepetitions }}</p>
+            <p class="card-text">{{ planning.nbSeries }}</p>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <h1>Mercredi</h1>
+
+    <div class="card-columns">
+    {% for planning in plannings %}
+      {% if planning.jour == "mercredi" %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planning.label }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
+            <p class="card-text">{{ planning.nbRepetitions }}</p>
+            <p class="card-text">{{ planning.nbSeries }}</p>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <h1>Jeudi</h1>
+
+    <div class="card-columns">
+    {% for planning in plannings %}
+      {% if planning.jour == "jeudi" %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planning.label }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
+            <p class="card-text">{{ planning.nbRepetitions }}</p>
+            <p class="card-text">{{ planning.nbSeries }}</p>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <h1>Vendredi</h1>
+
+    <div class="card-columns">
+    {% for planning in plannings %}
+      {% if planning.jour == "vendredi" %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planning.label }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
+            <p class="card-text">{{ planning.nbRepetitions }}</p>
+            <p class="card-text">{{ planning.nbSeries }}</p>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <h1>Samedi</h1>
+
+    <div class="card-columns">
+    {% for planning in plannings %}
+      {% if planning.jour == "samedi" %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planning.label }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
+            <p class="card-text">{{ planning.nbRepetitions }}</p>
+            <p class="card-text">{{ planning.nbSeries }}</p>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <h1>Dimanche</h1>
+
+    <div class="card-columns">
+    {% for planning in plannings %}
+      {% if planning.jour == "dimanche" %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planning.label }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
+            <p class="card-text">{{ planning.nbRepetitions }}</p>
+            <p class="card-text">{{ planning.nbSeries }}</p>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+
+
+
+
+
+    
+
 
   <div class="modal fade" id="modalAddTodo" tabindex="-1" role="dialog" aria-labelledby="modalAddTodo" aria-hidden="true">
     <div class="modal-dialog" role="document">
