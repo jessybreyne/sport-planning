@@ -1,0 +1,27 @@
+{
+  "name": "planning-sport",
+  "version": "1.0.0",
+  "description": "Application de gestion des taches",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.8.0",
+    "nunjucks": "^3.2.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Todo",
+    "Mongo",
+    "Mongoose",
+    "Express",
+    "Nunjucks"
+  ],
+  "author": "GR",
+  "license": "ISC"
+}

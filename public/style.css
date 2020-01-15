@@ -1,0 +1,12 @@
+body {
+  padding-top: 80px;
+}
+
+table.sortable thead {
+  font-weight: bold;
+  cursor: default;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+  content: " \25B4\25BE";
+}

@@ -1,0 +1,35 @@
+{% extends "base.njk" %}
+
+{% block title %}Todolist - Modifier{% endblock %}
+{% block navbar_title %}Modifier '{{ todo.label }}'{% endblock %}
+
+{% block content %}
+  <div class="col-md-6 offset-md-3">
+    <div class="card card-outline-primary mb-3 text-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <center>
+            <form action="/todo/edit/{{ todo._id }}" method="post">
+              <div class="form-group">
+                <label for="inputLabel">Nom de la tâche :</label>
+                <input type="text" class="form-control" id="inputLabel" name="inputLabel" value="{{ todo.label }}" autofocus required>
+              </div>
+              <div class="form-group">
+                <label for="inputDateBegin" class="">Début de la tâche :</label>
+                <input type="text" class="form-control" id="inputDateBegin" name="inputDateBegin" value="{{ todo.dateBegin }}" required>
+              </div>
+              <div class="form-group">
+                <label for="inputDateEnd" class="">Fin de la tâche :</label>
+                <input class="form-control" type="text" id="inputDateEnd" name="inputDateEnd" value="{{ todo.dateEnd }}">
+              </div>
+              <button type="submit" class="btn btn-success">Modifier '{{ todo.label }}'</button>
+            </form>
+
+            <br />
+            <a class="btn btn-primary" href="/todo" role="button">Retour</a>
+          </center>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+{% endblock %}
