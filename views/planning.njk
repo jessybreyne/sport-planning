@@ -2,14 +2,8 @@
 
 {% block content %}
   <div class="col-md-10 offset-md-1">
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAddTodo">
-              Ajouter un exercice
-            </button>
-           <br>
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAddTodo">Ajouter un exercice</button>
 
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemoveAllTodo">
-              Supprimer tout les exercices
-            </button>
 
   <h1>Lundi</h1>
 
@@ -22,10 +16,8 @@
             <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
             <p class="card-text">{{ planning.nbRepetitions }}</p>
             <p class="card-text">{{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</a>
+            <a class="btn btn-danger btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i> Supprimer</a>
           </div>
         </div>
       {% endif %}
@@ -161,7 +153,9 @@
 
 
 
-
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemoveAllTodo">
+  Supprimer tout les exercices
+</button>
 
     
 

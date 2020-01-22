@@ -1,3 +1,14 @@
+:root {
+	--white: #ffffff;
+	--light: #f0eff3;
+	--black: #000000;
+	--dark-blue: #1f2029;
+	--dark-light: #353746;
+	--red: #da2c4d;
+	--yellow: #f8ab37;
+	--grey: #ecedf3;
+}
+
 body {
   padding-top: 80px;
 }
@@ -9,4 +20,8 @@ table.sortable thead {
 
 table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
   content: " \25B4\25BE";
+}
+
+.card {
+  background-color: var(--dark-light);
 }
