@@ -100,7 +100,12 @@ router.route('/edit/:id')
 
 router.route('/delete/all')
   .get((req, res) => {
-    // A compléter
+    Planning.remove({}).then(() => {
+      console.log('Toutes les tâches ont étés supprimées');
+      res.redirect('/planning')
+    }).catch(err => {
+      console.error(err)
+    })
   })
 
 router.route('/delete/:id')
