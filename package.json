@@ -10,7 +10,9 @@
     "nunjucks": "^3.2.0",
     "path": "^0.12.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "express-validator": "^6.3.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

@@ -4,6 +4,7 @@ const nunjucks = require('nunjucks') // templates
 const session = require('express-session') // sessions
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const { check, validationResult } = require('express-validator'); // Form validator
 
 const config = require(path.join(__dirname, 'config.js'))
 
@@ -63,18 +64,34 @@ router.route('/')
   })
 
 router.route('/add')
-  .post((req, res) => {
-    new Planning({
-      label: req.body.inputLabel,
-      jour: req.body.inputJour,
-      nbRepetitions: req.body.inputNbRepetitions,
-      nbSeries: req.body.inputNbSeries
-    }).save().then(planning => {
-      console.log('Votre tâche a été ajoutée');
-      res.redirect('/planning')
-    }).catch(err => {
-      console.warn(err);
-    })
+  .post([
+    // validate the input
+    check("inputLabel").notEmpty(),
+    check("inputJour").notEmpty(),
+    check("inputNbRepetitions").isInt({min:0}),
+    check("inputNbSeries").isInt({min:0})
+  ],
+    
+    (req, res) => {
+
+        // check the validation object for errors
+      var errors = validationResult(req);
+      // if (!errors.isEmpty()) {
+      //   return res.status(422).json({ errors: errors.array() })
+      // }
+      console.log(errors);  
+
+      new Planning({
+        label: req.body.inputLabel,
+        jour: req.body.inputJour,
+        nbRepetitions: req.body.inputNbRepetitions,
+        nbSeries: req.body.inputNbSeries
+      }).save().then(planning => {
+        console.log('Votre tâche a été ajoutée');
+        res.redirect('/planning')
+      }).catch(err => {
+        console.warn(err);
+      })
   })
 
 router.route('/edit/:id')
