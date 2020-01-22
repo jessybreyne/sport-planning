@@ -6,18 +6,13 @@
 
     <title>{% block title %}Todolist{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/9112f3de1a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/pub/style.css">
     {% block endhead %}{% endblock %}
   </head>
 
   <body>
-    <nav class="navbar fixed-top navbar-light bg-faded">
-      <div class="text-center">
-        <h1>{% block navbar_title %}Todo <i class="fa fa-list" aria-hidden="true"></i> List{% endblock %}</h1>
-      </div>
-    </nav>
-
+    <h1>{% block navbar_title %}Planning <i class="fas fa-dumbbell"></i> Sport{% endblock %}</h1>
     <div class="container top-pushed">
       <div class="row">
         {% block content %}{% endblock %}

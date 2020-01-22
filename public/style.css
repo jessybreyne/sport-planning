@@ -10,7 +10,7 @@
 }
 
 body {
-  padding-top: 80px;
+  padding-top: 30px;
   background: var(--dark-blue);
   color: white;
 }
@@ -26,4 +26,8 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 .card {
   background-color: var(--dark-light);
+}
+
+h1 {
+	text-align: center;
 }
