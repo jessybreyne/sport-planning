@@ -10,12 +10,11 @@
     <div class="card-columns">
     {% for planning in plannings %}
       {% if planning.jour == "lundi" %}
-        <div class="card">
+        <div class="card text-white">
           <div class="card-body">
             <h5 class="card-title">{{ planning.label }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
-            <p class="card-text">{{ planning.nbRepetitions }}</p>
-            <p class="card-text">{{ planning.nbSeries }}</p>
+            <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
+            <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
             <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</a>
             <a class="btn btn-danger btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i> Supprimer</a>
           </div>
@@ -162,7 +161,7 @@
 
   <div class="modal fade" id="modalAddTodo" tabindex="-1" role="dialog" aria-labelledby="modalAddTodo" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content bg-dark">
         <div class="modal-header">
           <h5 class="modal-title" id="modalAddTodo">Ajouter un exercice</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">

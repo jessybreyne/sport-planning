@@ -11,6 +11,8 @@
 
 body {
   padding-top: 80px;
+  background: var(--dark-blue);
+  color: white;
 }
 
 table.sortable thead {
