@@ -10,8 +10,8 @@ const config = require(path.join(__dirname, 'config.js'))
 const PlanningSchema = new mongoose.Schema({
   label: { type: String, required: true },
   jour: { type: String },
-  nbRepetitions: { type: String },
-  nbSeries: { type: String },
+  nbRepetitions: { type: Number },
+  nbSeries: { type: Number },
 })
 
 // to fix all deprecation warnings
