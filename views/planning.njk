@@ -12,11 +12,11 @@
       {% if planning.jour == "lundi" %}
         <div class="card text-white">
           <div class="card-body">
+            <a class="card-link btn-poubelle" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
             <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
             <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</a>
-            <a class="btn btn-danger btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i> Supprimer</a>
           </div>
         </div>
       {% endif %}
