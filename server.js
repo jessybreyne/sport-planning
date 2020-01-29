@@ -67,18 +67,26 @@ router.route('/add')
   .post([
     // validate the input
     check("inputLabel").notEmpty(),
-    check("inputJour").notEmpty(),
-    check("inputNbRepetitions").isInt({min:0}),
-    check("inputNbSeries").isInt({min:0})
+    check("inputJour")
+      .notEmpty()
+      .withMessage("Le champs ne doit pas être vide !")
+      .isIn(["lundi", "mardi","mercredi","jeudi","vendredi","samedi","dimanche"])
+      .withMessage("La valeur n'est pas comprise dans la liste disponible !"),
+    check("inputNbRepetitions")
+      .isInt({min:0})
+      .withMessage("La valeur doit être superieur !"),
+    check("inputNbSeries")
+      .isInt({min:0})
+      .withMessage("La valeur doit être superieur !")
   ],
     
     (req, res) => {
 
         // check the validation object for errors
       var errors = validationResult(req);
-      // if (!errors.isEmpty()) {
-      //   return res.status(422).json({ errors: errors.array() })
-      // }
+      if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() })
+      }
       console.log(errors);  
 
       new Planning({
