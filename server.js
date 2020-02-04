@@ -13,6 +13,12 @@ const PlanningSchema = new mongoose.Schema({
   jour: { type: String },
   nbRepetitions: { type: Number },
   nbSeries: { type: Number },
+  userPlanning: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+})
+const UserSchema = new mongoose.Schema({
+  username: { type: String, unique:true, required: true },
+  password: { type: String, require: true},
+  role : { type: String, require: true, default:'user'}
 })
 
 // to fix all deprecation warnings
@@ -22,6 +28,7 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.set('useCreateIndex', true);
 
 const Planning = mongoose.model('Planning', PlanningSchema)
+const User = mongoose.model('User',UserSchema)
 
 mongoose.connect('mongodb://' + config.mongodb.host + '/' + config.mongodb.db)
 mongoose.connection.on('error', err => {
@@ -63,6 +70,35 @@ router.route('/')
     })
   })
 
+router.route('/register')
+  .get((req,res) =>
+    res.render('register.njk')
+  )
+  .post([
+    check("inputUsername")
+      .notEmpty(),
+    check("inputPassword")
+      .notEmpty()
+      .isLength({ min: 6 })
+      .withMessage("Votre mot de passe doit comporter au moins 6 charactères")
+  ],
+    (req,res)=>{
+      var errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() })
+      }
+      new User({
+        username: req.body.inputUsername,
+        password: req.body.inputPassword,
+      }).save().then(user => {
+        console.log('User created');
+        res.redirect('/')
+      }).catch(err => {
+        console.warn(err);
+      })
+    }
+  )
+
 router.route('/add')
   .post([
     // validate the input
@@ -73,10 +109,10 @@ router.route('/add')
       .isIn(["lundi", "mardi","mercredi","jeudi","vendredi","samedi","dimanche"])
       .withMessage("La valeur n'est pas comprise dans la liste disponible !"),
     check("inputNbRepetitions")
-      .isInt({min:0})
+      .isInt({min:1})
       .withMessage("La valeur doit être superieur !"),
     check("inputNbSeries")
-      .isInt({min:0})
+      .isInt({min:1})
       .withMessage("La valeur doit être superieur !")
   ],
     
@@ -96,7 +132,7 @@ router.route('/add')
         nbSeries: req.body.inputNbSeries
       }).save().then(planning => {
         console.log('Votre tâche a été ajoutée');
-        res.redirect('/planning')
+        res.redirect('/')
       }).catch(err => {
         console.warn(err);
       })
@@ -114,7 +150,7 @@ router.route('/edit/:id')
     Planning.findByIdAndUpdate(req.params.id, req.body).then(planning => {
       planning.save().then(planning => {
         console.log('Votre tâche a été modifiée');
-        res.redirect('/planning');
+        res.redirect('/');
       }).catch(err => {
         console.error(err)
       });
@@ -127,7 +163,7 @@ router.route('/delete/all')
   .get((req, res) => {
     Planning.remove({}).then(() => {
       console.log('Toutes les tâches ont étés supprimées');
-      res.redirect('/planning')
+      res.redirect('/')
     }).catch(err => {
       console.error(err)
     })
@@ -137,17 +173,16 @@ router.route('/delete/:id')
   .get((req, res) => {
     Planning.findByIdAndRemove({ _id: req.params.id }).then(() => {
       console.log('Votre tâche est finie');
-      res.redirect('/planning')
+      res.redirect('/')
     }).catch(err => {
       console.error(err)
     })
   })
 
-
-app.use('/planning', router)
+app.use('/',router)
 app.use('/pub', express.static('public'))
 app.use((req, res) => {
-  res.redirect('/planning')
+  res.redirect('/')
 })
 
 app.listen(config.express.port, config.express.ip, () => {
