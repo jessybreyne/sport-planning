@@ -9,7 +9,7 @@
       <div class="card-block">
         <blockquote class="card-blockquote">
           <center>
-            <form action="/planning/edit/{{ planning._id }}" method="post">
+            <form action="/edit/{{ planning._id }}" method="post">
               <div class="form-group">
                 <label for="inputLabel">Nom de l'exercice :</label>
                 <input type="text" class="form-control" id="inputLabel" name="inputLabel" value="{{ planning.label }}" autofocus required>
@@ -38,7 +38,7 @@
             </form>
 
             <br />
-            <a class="btn btn-primary" href="/planning" role="button">Retour</a>
+            <a class="btn btn-primary" href="/" role="button">Retour</a>
           </center>
         </blockquote>
       </div>

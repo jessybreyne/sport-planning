@@ -9,7 +9,7 @@ const { check, validationResult } = require('express-validator'); // Form valida
 const config = require(path.join(__dirname, 'config.js'))
 
 let MONGO_DB;
-const DOCKER_DB=true; // Si docker mettre true sinon false
+const DOCKER_DB=false; // Si docker mettre true sinon false
 
 const PlanningSchema = new mongoose.Schema({
   label: { type: String, required: true },
@@ -157,17 +157,17 @@ router.route('/edit/:id')
     })
   })
   .post((req, res) => {
-    Planning.findByIdAndUpdate(req.params.id, req.body).then(planning => {
-      planning.save().then(planning => {
-        console.log('Votre tâche a été modifiée');
+    Planning.findByIdAndUpdate(req.params.id,{
+      label: req.body.inputLabel,
+      jour: req.body.inputJour,
+      nbRepetitions: req.body.inputNbRepetitions,
+      nbSeries: req.body.inputNbSerie
+    }).then(planning => {
         res.redirect('/');
       }).catch(err => {
         console.error(err)
       });
-    }).catch(err => {
-      console.error(err)
-    })
-  })
+    });
 
 router.route('/delete/all')
   .get((req, res) => {
