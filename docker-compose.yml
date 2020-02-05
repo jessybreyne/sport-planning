@@ -1,0 +1,14 @@
+version: '3'
+services:
+  node-app:
+    build: .
+    ports:
+      - 16062:3000
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    volumes:
+      - /data/mongodb/db:/data/db
+    ports:
+      - "16063:27017"

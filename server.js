@@ -8,6 +8,9 @@ const { check, validationResult } = require('express-validator'); // Form valida
 
 const config = require(path.join(__dirname, 'config.js'))
 
+let MONGO_DB;
+const DOCKER_DB=false; // Si docker mettre true sinon false
+
 const PlanningSchema = new mongoose.Schema({
   label: { type: String, required: true },
   jour: { type: String },
@@ -30,7 +33,14 @@ mongoose.set('useCreateIndex', true);
 const Planning = mongoose.model('Planning', PlanningSchema)
 const User = mongoose.model('User',UserSchema)
 
-mongoose.connect('mongodb://' + config.mongodb.host + '/' + config.mongodb.db)
+if ( DOCKER_DB ){
+  MONGO_DB = "mongodb://"+config.mongodb.docker.host+":"+config.mongodb.docker.port
+}
+else{
+  MONGO_DB = "mongodb://"+config.mongodb.local.host+":"+config.mongodb.local.port
+}
+
+mongoose.connect(MONGO_DB);
 mongoose.connection.on('error', err => {
   console.error(err)
 })
@@ -147,17 +157,17 @@ router.route('/edit/:id')
     })
   })
   .post((req, res) => {
-    Planning.findByIdAndUpdate(req.params.id, req.body).then(planning => {
-      planning.save().then(planning => {
-        console.log('Votre tâche a été modifiée');
+    Planning.findByIdAndUpdate(req.params.id,{
+      label: req.body.inputLabel,
+      jour: req.body.inputJour,
+      nbRepetitions: req.body.inputNbRepetitions,
+      nbSeries: req.body.inputNbSerie
+    }).then(planning => {
         res.redirect('/');
       }).catch(err => {
         console.error(err)
       });
-    }).catch(err => {
-      console.error(err)
-    })
-  })
+    });
 
 router.route('/delete/all')
   .get((req, res) => {
@@ -184,7 +194,13 @@ app.use('/pub', express.static('public'))
 app.use((req, res) => {
   res.redirect('/')
 })
-
-app.listen(config.express.port, config.express.ip, () => {
-  console.log('Server listening on ' + config.express.ip + ':' + config.express.port)
-})
+if (DOCKER_DB){
+  app.listen(config.express.port, config.express.docker.ip, () => {
+    console.log('Server listening on ' + config.express.docker.ip + ':' + config.express.port)
+  })
+}
+else{
+  app.listen(config.express.port, config.express.local.ip, () => {
+    console.log('Server listening on ' + config.express.local.ip + ':' + config.express.port)
+  })
+}

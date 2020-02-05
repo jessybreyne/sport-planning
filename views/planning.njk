@@ -12,8 +12,8 @@
       {% if planning.jour == "lundi" %}
         <div class="card text-white">
           <div class="card-body">
-            <a class="card-link btn-poubelle" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
-            <a class="card-link btn-modifier" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a class="card-link btn-poubelle" href="/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
             <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
             <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
@@ -28,16 +28,13 @@
     <div class="card-columns">
     {% for planning in plannings %}
       {% if planning.jour == "mardi" %}
-        <div class="card">
+        <div class="card text-white">
           <div class="card-body">
+            <a class="card-link btn-poubelle" href="/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
-            <p class="card-text">{{ planning.nbRepetitions }}</p>
-            <p class="card-text">{{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
+            <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
           </div>
         </div>
       {% endif %}
@@ -49,16 +46,13 @@
     <div class="card-columns">
     {% for planning in plannings %}
       {% if planning.jour == "mercredi" %}
-        <div class="card">
+         <div class="card text-white">
           <div class="card-body">
+            <a class="card-link btn-poubelle" href="/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
-            <p class="card-text">{{ planning.nbRepetitions }}</p>
-            <p class="card-text">{{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
+            <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
           </div>
         </div>
       {% endif %}
@@ -70,16 +64,13 @@
     <div class="card-columns">
     {% for planning in plannings %}
       {% if planning.jour == "jeudi" %}
-        <div class="card">
+        <div class="card text-white">
           <div class="card-body">
+            <a class="card-link btn-poubelle" href="/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
-            <p class="card-text">{{ planning.nbRepetitions }}</p>
-            <p class="card-text">{{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
+            <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
           </div>
         </div>
       {% endif %}
@@ -91,16 +82,13 @@
     <div class="card-columns">
     {% for planning in plannings %}
       {% if planning.jour == "vendredi" %}
-        <div class="card">
+        <div class="card text-white">
           <div class="card-body">
+            <a class="card-link btn-poubelle" href="/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
-            <p class="card-text">{{ planning.nbRepetitions }}</p>
-            <p class="card-text">{{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
+            <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
           </div>
         </div>
       {% endif %}
@@ -112,16 +100,13 @@
     <div class="card-columns">
     {% for planning in plannings %}
       {% if planning.jour == "samedi" %}
-        <div class="card">
+        <div class="card text-white">
           <div class="card-body">
+            <a class="card-link btn-poubelle" href="/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
-            <p class="card-text">{{ planning.nbRepetitions }}</p>
-            <p class="card-text">{{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
+            <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
           </div>
         </div>
       {% endif %}
@@ -133,16 +118,13 @@
     <div class="card-columns">
     {% for planning in plannings %}
       {% if planning.jour == "dimanche" %}
-        <div class="card">
+        <div class="card text-white">
           <div class="card-body">
+            <a class="card-link btn-poubelle" href="/delete/{{ planning._id }}" role="button"><i class="fa fa-trash"></i></a>
+            <a class="card-link btn-modifier" href="/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <h5 class="card-title">{{ planning.label }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ planning.jour }}</h6>
-            <p class="card-text">{{ planning.nbRepetitions }}</p>
-            <p class="card-text">{{ planning.nbSeries }}</p>
-            <a class="btn btn-warning btn-sm card-link" href="/planning/edit/{{ planning._id }}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a class="btn btn-success btn-sm card-link" href="/planning/delete/{{ planning._id }}" role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">nombre répétitions : {{ planning.nbRepetitions }}</p>
+            <p class="card-text">nombre série : {{ planning.nbSeries }}</p>
           </div>
         </div>
       {% endif %}
